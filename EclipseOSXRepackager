@@ -82,7 +82,7 @@ test -d "$source_dir" || fatal_error "source directory $source_dir does not exis
 
 source_app_dir="$source_dir/Eclipse.app"
 if ! test -d "$source_app_dir"; then
-  source_app_name="$(cd $source_dir; ls -1d *.app)"
+  source_app_name="$(cd "$source_dir"; ls -1d *.app)"
   test -z "$source_app_name"  && fatal_error "launcher not found: neither Eclipse.app nor *.app found in $source_dir"
   source_app_dir="$source_dir/$source_app_name"
 fi
@@ -137,10 +137,10 @@ fi
 ####################################################################################
 #  Find the launcher
 
-launcher_jar="$(cd $source_plugins_dir; ls -1 org.eclipse.equinox.launcher_*)"
-launcher_fragment_jar="$(cd $source_plugins_dir; ls -1 org.eclipse.equinox.launcher.cocoa.macosx*/eclipse*.so)"
+launcher_jar="$(cd "$source_plugins_dir"; ls -1 org.eclipse.equinox.launcher_*)"
+launcher_fragment_jar="$(cd "$source_plugins_dir"; ls -1 org.eclipse.equinox.launcher.cocoa.macosx*/eclipse*.so)"
 test -z "$launcher_fragment_jar" &&
-  launcher_fragment_jar="$(cd $source_plugins_dir; ls -1 org.eclipse.equinox.launcher.carbon.macosx_*/eclipse*.so)"
+  launcher_fragment_jar="$(cd "$source_plugins_dir"; ls -1 org.eclipse.equinox.launcher.carbon.macosx_*/eclipse*.so)"
 
 test -z "$launcher_jar"          && fatal_error "cannot find launcher jar (org.eclipse.equinox.launcher_*)"
 test -z "$launcher_fragment_jar" && fatal_error "cannot find launcher fragment jar (org.eclipse.equinox.launcher.carbon.macosx_*)"
