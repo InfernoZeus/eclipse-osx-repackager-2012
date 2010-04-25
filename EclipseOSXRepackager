@@ -96,6 +96,7 @@ source_info_plist="$source_app_dir/Contents/Info.plist"
 source_plugins_dir="$source_dir/plugins"
 source_features_dir="$source_dir/features"
 source_configuration_dir="$source_dir/configuration"
+source_dropins_dir="$source_dir/dropins"
 source_p2_dir="$source_dir/p2"
 source_artifacts_xml="$source_dir/artifacts.xml"
 mv_or_cp_r="cp -r"
@@ -214,5 +215,8 @@ test -d "$source_features_dir" && {
 
 echo "$mv_or_cp_desc plugins..."
 $mv_or_cp_r $verbose "$source_plugins_dir" "$target_java_dir/plugins"
+
+echo "$mv_or_cp_desc dropins..."
+$mv_or_cp_r $verbose "$source_dropins_dir" "$target_java_dir/dropins"
 
 echo "Done."
