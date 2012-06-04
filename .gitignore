@@ -1,5 +1,6 @@
 /temp/*
 .svn
+build/
 
 # OS generated files #
 ######################

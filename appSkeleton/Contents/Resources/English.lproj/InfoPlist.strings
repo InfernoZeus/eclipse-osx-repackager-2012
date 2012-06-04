@@ -1,0 +1,4 @@
+CFBundleName = "Eclipse OS X Repackager";
+CFBundleShortVersionString = "11";
+CFBundleGetInfoString = "Eclipse OS X Repackager version 11 Copyright 2008 Andrey Tarantsov";
+NSHumanReadableCopyright = "Copyright 2008 Andrey Tarantsov.";
