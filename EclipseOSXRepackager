@@ -9,9 +9,9 @@ function fatal_error() {
 }
 
 function version() {
-  rev="[[ver]]"
+  rev="1"
   if test -z "$1"; then
-    echo "YourSway Eclipse OS X Repackager $rev"
+    echo "EclipseOSXRepackager 2012 r$rev"
   else
     echo -n "$rev"
   fi
@@ -144,7 +144,7 @@ test -z "$launcher_fragment_jar" &&
   launcher_fragment_jar="$(cd "$source_plugins_dir"; ls -1 org.eclipse.equinox.launcher.carbon.macosx_*/eclipse*.so | tail -n1)"
 
 test -z "$launcher_jar"          && fatal_error "cannot find launcher jar (org.eclipse.equinox.launcher_*)"
-test -z "$launcher_fragment_jar" && fatal_error "cannot find launcher fragment jar (org.eclipse.equinox.launcher.carbon.macosx_*)"
+test -z "$launcher_fragment_jar" && fatal_error "cannot find launcher fragment jar (org.eclipse.equinox.launcher.cocoa.macosx* or org.eclipse.equinox.launcher.carbon.macosx_*)"
 
 
 ####################################################################################
