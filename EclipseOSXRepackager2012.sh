@@ -9,9 +9,9 @@ function fatal_error() {
 }
 
 function version() {
-  rev="$(echo '$Revision: 10 $' | perl -ne 'if(/Revision:\s*(\d+)/) {print $1} else {print "UNKNOWN"}')"
+  rev="1"
   if test -z "$1"; then
-    echo "EclipseOSXRepackager r$rev"
+    echo "EclipseOSXRepackager 2012 r$rev"  
   else
     echo -n "$rev"
   fi
@@ -139,10 +139,15 @@ fi
 #  Find the launcher
 
 launcher_jar="$(cd $source_plugins_dir; ls -1 org.eclipse.equinox.launcher_*)"
-launcher_fragment_jar="$(cd $source_plugins_dir; ls -1 org.eclipse.equinox.launcher.carbon.macosx_*/eclipse*.so)"
-
 test -z "$launcher_jar"          && fatal_error "cannot find launcher jar (org.eclipse.equinox.launcher_*)"
-test -z "$launcher_fragment_jar" && fatal_error "cannot find launcher fragment jar (org.eclipse.equinox.launcher.carbon.macosx_*)"
+
+launcher_fragment_jar="$(cd $source_plugins_dir; ls -1 org.eclipse.equinox.launcher.cocoa.macosx.*/eclipse*.so)"
+if test -z "$launcher_fragment_jar"; then
+  launcher_fragment_jar="$(cd $source_plugins_dir; ls -1 org.eclipse.equinox.launcher.carbon.macosx_*/eclipse*.so)"
+  if test -z "$launcher_fragment_jar"; then
+    fatal_error "cannot find launcher fragment jar (org.eclipse.equinox.launcher.cocoa.macosx_*)"
+  fi
+fi
 
 
 ####################################################################################

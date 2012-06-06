@@ -7,7 +7,6 @@ APP_SKELETON="appSkeleton"
 BUILD_LOCATION="build"
 APP_BUNDLE="$BUILD_LOCATION/Eclipse OS X Repackager 2012.app"
 
-
 if [ "$1" == "--clean" ]; then
 	rm -R "$BUILD_LOCATION"
 	exit
@@ -25,6 +24,10 @@ fi
 
 if [ -d "$APP_BUNDLE" ]; then
 	rm -R "$APP_BUNDLE"
+fi
+
+if [ -d "$BUILD_LOCATION" ]; then
+	rm -R "$BUILD_LOCATION"
 fi
 
 mkdir "$BUILD_LOCATION"

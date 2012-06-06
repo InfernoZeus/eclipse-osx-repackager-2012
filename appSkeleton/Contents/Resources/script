@@ -31,7 +31,11 @@ source_dir="$1"
 if test -z "$source_dir"; then
   source_dir="$("$DLG" fileselect --select‑directories --title "$title" --text "Choose any file inside Eclipse installation to turn into OS X bundle")"
   test -z "$source_dir" && exit 1
-  if test -f "$source_dir"; then source_dir="$(dirname "$source_dir")"; fi
+  end_string="${source_dir:${#source_dir}-4:4}"
+  if [[ -f "$source_dir" || $end_string = ".app" ]]; then 
+    # if the path is a file or the app bundle, find the parent directory's path which is needed by the shell script
+    source_dir="$(dirname "$source_dir")"
+  fi
 fi
 
 info="$("$WORKER" --explore $source_dir)" || display_fatal_error "$info"
