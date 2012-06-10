@@ -1,3 +1,11 @@
+Version 1 (commit id 1fac20a6e3f802c91a6a00d4a19232b76896690e)
+--------------------------------------------------------------
+
+Updated to add support for Eclipse Juno (4.2), for Cocoa, and
+for the dropins folder
+
+
+Old Eclipse OSX Repackager
 Version 11 (commit id b96da007243871792aa216558ed6d7444b651f8c)
 ---------------------------------------------------------------
 

@@ -1,14 +1,13 @@
 #! /bin/bash
-APP_BUNDLE="$1"; shift
-DLG="$APP_BUNDLE/Contents/Resources/CocoaDialog.app/Contents/MacOS/CocoaDialog"
-WORKER="$APP_BUNDLE/Contents/Resources/EclipseOSXRepackager"
+DLG="./CocoaDialog.app/Contents/MacOS/CocoaDialog"
+WORKER="./EclipseOSXRepackager"
 
 if ! test -z "$TEST_REPACKAGER_UI"; then
   DLG="/Applications/CocoaDialog.app/Contents/MacOS/CocoaDialog"
   WORKER="./EclipseOSXRepackager"
 fi
 
-title="Eclipse OS X Repackager [[ver]]"
+title="Eclipse OS X Repackager 2012"
 
 function display_fatal_error() {
   "$DLG" msgbox --title "$title" --text "Fatal error" --informative-text "$1" --button1 "Give up and exit"

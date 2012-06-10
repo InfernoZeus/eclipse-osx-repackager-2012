@@ -9,11 +9,11 @@ function fatal_error() {
 }
 
 function version() {
-  rev="1"
+  ver="[[ver]]"
   if test -z "$1"; then
-    echo "EclipseOSXRepackager 2012 r$rev"
+    echo "Eclipse OS X Repackager 2012 v$ver"
   else
-    echo -n "$rev"
+    echo -n "$ver"
   fi
 }
 
